@@ -29,7 +29,19 @@ Este proyecto consiste en un dispositivo embebido portátil montado sobre una pr
 * **Botón Pulsador:** ➡️ GPIO 4 (Configurado con INPUT_PULLUP interno)
 
 ## 🗺️ Diagramas del Sistema
-
+flowchart LR
+    subgraph Entrada_Datos
+        A[Lecturas Crudas del Sensor] --> B[Captura Multimodal en Python]
+    end
+    subgraph Procesamiento_Lógico
+        B --> C{Bucle Repetitivo FOR}
+        C --> D[Diccionario de Datos Actual]
+        D --> E{Estructuras Condicionales IF / ELSE}
+    end
+    subgraph Capa_Salida
+        E -->|Condición de Riesgo| F[Emisión de Alertas de Hardware]
+        E -->|Flujo Normal| G[Lista Histórica / Base de Datos]
+    end
 ### 1. Diagrama de Funcionalidad (Casos de Uso)
 Este diagrama describe cómo interactúan los actores del sistema (el entorno/hardware y el usuario) con la lógica interna del software.
 
